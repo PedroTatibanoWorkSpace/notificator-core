@@ -1,0 +1,14 @@
+target/
+.git/
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+compose.yaml
+.env
+*.log
+.DS_Store
+.idea/
+*.iml
+*.ipr
+*.iws
