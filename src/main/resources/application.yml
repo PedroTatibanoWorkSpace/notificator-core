@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: notificator
+  profiles:
+    active: dev
+  
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/notificator}
+    username: ${SPRING_DATASOURCE_USERNAME:notificator}
+    password: ${SPRING_DATASOURCE_PASSWORD:notificator123}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:notificator}
+    password: ${SPRING_RABBITMQ_PASSWORD:rabbitmq123}
+
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+      password: ${SPRING_REDIS_PASSWORD:redis123}
+
+logging:
+  level:
+    '[org.hibernate.SQL]': DEBUG
+    '[org.flywaydb]': DEBUG
